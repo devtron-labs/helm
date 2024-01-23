@@ -5,6 +5,7 @@ import (
 )
 
 // GetTagsIgnoreSemVer implements Tags function but removes semver StrictNewVersion check
+// fix for issue https://github.com/devtron-labs/devtron/issues/4385, tags were not semver compatible, so they were getting filtered by StrictNewVersion check
 func (c *Client) GetTagsIgnoreSemVer(ref string) ([]string, error) {
 	parsedReference, err := registry.ParseReference(ref)
 	if err != nil {
